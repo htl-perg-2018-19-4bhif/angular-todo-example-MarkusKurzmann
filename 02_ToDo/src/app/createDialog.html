@@ -1,0 +1,25 @@
+<h1 mat-dialog-title>Add ToDo</h1>
+<div mat-dialog-content>
+    <mat-form-field>
+        <mat-label>Assigned to:</mat-label>
+        <mat-select [(value)]="selected">
+            <mat-option *ngFor="let person of people" [(value)]="person.name">
+                {{person.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Description:</mat-label>
+        <input matInput placeholder="Description" [(ngModel)]="description">
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Due to:</mat-label>
+        <input matInput [matDatepicker]="picker1" placeholder="Angular forms" [formControl]="date">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button (click)="onClick()">Ok</button>
+</div>

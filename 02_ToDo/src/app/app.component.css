@@ -1,0 +1,13 @@
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+p {
+  font-family: Lato;
+}
+
+.fab{
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    height: 80px;
+    width: 80px;
+}

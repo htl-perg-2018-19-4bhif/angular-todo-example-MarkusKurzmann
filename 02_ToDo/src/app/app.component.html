@@ -1,0 +1,47 @@
+<mat-table [(dataSource)]="filtered" class="mat-elevation-z8">
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let todo"> {{todo.id}} </mat-cell>
+    </ng-container>
+<ng-container matColumnDef="assignedTo">
+    <mat-header-cell *matHeaderCellDef> <button mat-button  (click)="showForMe()">Assigned to</button> </mat-header-cell>
+    <mat-cell *matCellDef="let todo"> {{todo.assignedTo}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let todo"> {{todo.description}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="dueDate">
+    <mat-header-cell *matHeaderCellDef> Due to </mat-header-cell>
+    <mat-cell *matCellDef="let todo"> {{todo.dueDate  | date:'mediumDate'}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="done">
+    <mat-header-cell *matHeaderCellDef> <button mat-button  (click)="showDone()">Done.</button> </mat-header-cell>
+    <mat-cell *matCellDef="let todo">
+        <mat-checkbox [(checked)]="todo.done" (click)="setdone(todo)"></mat-checkbox>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="edit">
+    <mat-header-cell *matHeaderCellDef> </mat-header-cell>
+    <mat-cell *matCellDef="let todo">
+        <button mat-icon-button color="primary" (click)="editDialog(todo)">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">create</mat-icon>
+          </button>
+          <button mat-icon-button color="primary" (click)="delete(todo)">
+              <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+              <mat-icon aria-hidden="false" aria-label="Example home icon">delete</mat-icon>
+            </button>
+    </mat-cell>
+  </ng-container>
+
+   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+</mat-table>
+
+<button mat-fab color="primary" class="fab" (click)="openDialog()">Add ToDo</button>
+
